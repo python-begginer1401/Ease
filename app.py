@@ -14,7 +14,7 @@ with st.sidebar:
 if tabs == "Main Page":
     st.title("🌬️ Ease Platform for Speacial Students ")
     st.write("""
-        Welcome to the Ease Platform! 
+        Welcome to the AI tools Platform! 
         
         - **File Q&A**: Upload an article and get answers to your questions in a simplified manner.
         - **Chatbot Specialist**: Interact with a chatbot with any help you might need or if you just want to chat :)
