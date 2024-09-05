@@ -1,17 +1,23 @@
 import streamlit as st
 import google.generativeai as genai
 from pypdf import PdfReader
+from gtts import gTTS
+from io import BytesIO
+import textwrap
+
 
 # Initialize Google Gemini model
 model = genai.GenerativeModel("gemini-1.5-flash-latest")
 
 # Sidebar for API Key input and tab selection
 with st.sidebar:
-    tabs = st.selectbox("Choose a tab", ["Main Page", "File Q&A", "Chatbot Specialist", "Practice Exam Generator", "Text Simplifier"])
+    tabs = st.sidebar.radio("Navigate", ["🏠 Home", "💬 Chatbot Specialist", "📝 File Q&A", "🎧 Audio Explanation Generator", "📚 Practice Exam Generator", "📝 Text Simplifier" ])
+
+
     api_key = st.text_input("Google API Key", key="gemnikey", type="password")
 
 # Main Page Tab
-if tabs == "Main Page":
+if tabs == "🏠 Home":
     st.title("🌬️ Ease Platform for Speacial Students ")
     st.write("""
         Welcome to the AI tools Platform! 
@@ -25,6 +31,36 @@ if tabs == "Main Page":
         Select a tab from the sidebar to get started!
     """)
 
+# Audio Explanation Generator Tab
+elif tabs == "🎧 Audio Explanation Generator":
+    
+    st.title("🎧 Audio Explanation Generator")
+
+    lesson_subject = st.text_input("Enter the lesson subject", placeholder="e.g., Math, Science, History")
+    lesson_topic = st.text_input("Enter the lesson topic", placeholder="e.g., Algebra, Photosynthesis, World War II")
+
+    if st.button("Generate Lesson"):
+        try:
+            prompt = f"Write a simple lesson about {lesson_topic} in the subject of {lesson_subject}"
+            response = model.generate_content(prompt)
+            lesson_text = response.text
+
+            if lesson_text:
+                st.write("### Lesson")
+                st.write(to_markdown(lesson_text))
+
+                tts = gTTS(text=lesson_text, lang='en')
+                audio_path = "lesson_audio.mp3"
+                tts.save(audio_path)
+
+                # Display the audio to the user
+                audio_file = open(audio_path, "rb").read()
+                st.audio(audio_file, format="audio/mp3")
+                st.download_button("Download Lesson Audio", data=audio_file, file_name="lesson_audio.mp3", mime="audio/mp3")
+            else:
+                st.warning("No output generated. Please try again with a different lesson subject or topic.")
+        except Exception as e:
+            st.error(f"An error occurred while generating the lesson: {e}")
 # File Q&A Tab
 elif tabs == "File Q&A":
     st.title("📝 File Q&A")
@@ -49,7 +85,7 @@ elif tabs == "File Q&A":
             st.error("Couldn't extract article.")
 
 # Chatbot Tab
-elif tabs == "Chatbot Specialist":
+elif tabs == "💬 Chatbot Specialist":
     st.title("💬 Chatbot Specialist")
     if "messages" not in st.session_state:
         st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
@@ -69,8 +105,8 @@ elif tabs == "Chatbot Specialist":
         st.chat_message("assistant").write(response)
 
 # Practice Exam Generator Tab
-elif tabs == "Practice Exam Generator":
-    st.title("📝 Practice Exam Generator")
+elif tabs == "📚 Practice Exam Generator":
+    st.title("📚 Practice Exam Generator")
     difficulty = st.selectbox("Select Difficulty", ["Easy", "Medium", "Hard"])
     subject = st.text_input("Enter the subject", placeholder="e.g., Math, Science, History")
     topic = st.text_input("Enter a specific topic", placeholder="e.g., Algebra, Photosynthesis")
@@ -82,7 +118,7 @@ elif tabs == "Practice Exam Generator":
         st.write("### Practice Exam")
         st.write(response)
 
-elif tabs == "Text Simplifier":
+elif tabs == "📝 Text Simplifier":
     st.title("📝 Text Simplifier")
     text_input = st.text_area("Enter the text you want to simplify", height=200)
     
