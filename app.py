@@ -7,7 +7,7 @@ model = genai.GenerativeModel("gemini-1.5-flash-latest")
 
 # Sidebar for API Key input and tab selection
 with st.sidebar:
-    tabs = st.selectbox("Choose a tab", ["Main Page", "File Q&A", "Chatbot", "Practice Exam Generator", "Video Explanation Generator", "Text Simplifier"])
+    tabs = st.selectbox("Choose a tab", ["Main Page", "File Q&A", "Chatbot", "Practice Exam Generator", "Text Simplifier"])
     api_key = st.text_input("Google API Key", key="gemnikey", type="password")
 
 # Main Page Tab
