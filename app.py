@@ -89,7 +89,7 @@ elif tabs == "Text Simplifier":
     if st.button("Simplify Text") and api_key and text_input:
         try:
             genai.configure(api_key=api_key)
-            prompt_text = f"Simplify the following text so that it is easy to understand for students with Global Developmental Delay and adapt based the inputted language:\n\n{text_input}"
+            prompt_text = f"Simplify the following text so that it is easy to understand for students with Global Developmental Delay and respond with the inputted language:\n\n{text_input}"
             response = model.generate_content(prompt_text).text
             st.write("### Simplified Text")
             st.write(response)
