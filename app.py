@@ -7,7 +7,7 @@ model = genai.GenerativeModel("gemini-1.5-flash-latest")
 
 # Sidebar for API Key input and tab selection
 with st.sidebar:
-    tabs = st.selectbox("Choose a tab", ["Main Page", "File Q&A", "Chatbot", "Practice Exam Generator", "Text Simplifier"])
+    tabs = st.selectbox("Choose a tab", ["Main Page", "File Q&A", "Chatbot Specialist", "Practice Exam Generator", "Text Simplifier"])
     api_key = st.text_input("Google API Key", key="gemnikey", type="password")
 
 # Main Page Tab
@@ -17,7 +17,7 @@ if tabs == "Main Page":
         Welcome to the Ease Platform! 
         
         - **File Q&A**: Upload an article and get answers to your questions in a simplified manner.
-        - **Chatbot**: Interact with a chatbot for personalized assistance and inquiries.
+        - **Chatbot Specialist **: Interact with a chatbot with any help you might need or if you just want to chat :)
         - **Practice Exam Generator**: Generate practice exams based on difficulty, subject, and topic to aid learning.
         - **Video Explanation Generator**: Generate audio explanations with text-to-speech functionality for better understanding.
         - **Text Simplifier**: Simplify text to make it more accessible and easier to understand.
