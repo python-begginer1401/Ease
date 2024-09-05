@@ -120,7 +120,7 @@ elif tabs == "📚 Practice Exam Generator":
     
     if st.button("Generate Exam") and api_key and subject and topic:
         genai.configure(api_key=api_key)
-        prompt_text = f"Generate {difficulty} level practice exam questions for {subject} on the topic of {topic}. Ensure the questions are suitable for students with Global Developmental Delay. Ensure that you generate multiple question types also use very simple vocabulary since the student using this has GDD global developmental delay "
+        prompt_text = f"Generate {difficulty} level practice exam questions for {subject} on the topic of {topic}. Ensure the questions are suitable for students with Global Developmental Delay. Ensure that you generate multiple question types also use very simple vocabulary since the student using this has GDD global developmental delay also add the answers at the end and ensure that the questions are based on the difficultiy entered "
         response = model.generate_content(prompt_text).text
         st.write("### Practice Exam")
         st.write(response)
