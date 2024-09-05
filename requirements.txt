@@ -2,5 +2,4 @@ google-generativeai
 streamlit
 pypdf
 gtts
-io
-textwrap
+
