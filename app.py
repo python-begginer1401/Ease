@@ -1,3 +1,5 @@
+
+
 import streamlit as st
 import google.generativeai as genai
 from pypdf import PdfReader
@@ -11,7 +13,7 @@ model = genai.GenerativeModel("gemini-1.5-flash-latest")
 
 # Sidebar for API Key input and tab selection
 with st.sidebar:
-    tabs = st.sidebar.radio("Navigate", ["🏠 Home", "💬 Chatbot Specialist", "📝 File Q&A", "🎧 Audio Explanation Generator", "📚 Practice Exam Generator", "📝 Text Simplifier" ])
+    tabs = st.sidebar.radio("Services/Programs", ["🏠 Home", "💬 Chatbot Specialist", "📝 File Q&A", "🎧 Audio Explanation Generator", "📚 Practice Exam Generator", "📝 Text Simplifier" ])
 
 
     api_key = st.text_input("Google API Key", key="gemnikey", type="password")
@@ -24,9 +26,9 @@ if tabs == "🏠 Home":
         
         - 📝 **File Q&A**: Upload an article and get answers to your questions in a simplified manner.
         - 💬 **Chatbot Specialist**: Interact with a chatbot with any help you might need or if you just want to chat.
-        - 📝 **Practice Exam Generator**: Generate practice exams based on difficulty, subject, and topic to aid learning.
-        - **Audio Explanation Generator**: Generate audio explanations with text-to-speech functionality for better understanding.
-        - **Text Simplifier**: Simplify text to make it more accessible and easier to understand.
+        - 📚 **Practice Exam Generator**: Generate practice exams based on difficulty, subject, and topic to aid learning.
+        - 🎧**Audio Explanation Generator**: Generate audio explanations with text-to-speech functionality for better understanding.
+        - 📝**Text Simplifier**: Simplify text to make it more accessible and easier to understand.
 
         Select a tab from the sidebar to get started!
     """)
@@ -62,7 +64,7 @@ elif tabs == "🎧 Audio Explanation Generator":
         except Exception as e:
             st.error(f"An error occurred while generating the lesson: {e}")
 # File Q&A Tab
-elif tabs == "File Q&A":
+elif tabs == "📝 File Q&A":
     st.title("📝 File Q&A")
     uploaded_file = st.file_uploader("Upload an article", type=("txt", "md", "pdf"))
     question = st.text_input("Ask something about the article", placeholder="Can you give me a short summary?", disabled=not uploaded_file)
@@ -131,4 +133,3 @@ elif tabs == "📝 Text Simplifier":
             st.write(response)
         except Exception as e:
             st.error(f"An error occurred while simplifying the text: {e}")
-
