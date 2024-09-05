@@ -17,7 +17,7 @@ if tabs == "Main Page":
         Welcome to the Ease Platform! 
         
         - **File Q&A**: Upload an article and get answers to your questions in a simplified manner.
-        - **Chatbot Specialist **: Interact with a chatbot with any help you might need or if you just want to chat :)
+        - **Chatbot Specialist**: Interact with a chatbot with any help you might need or if you just want to chat :)
         - **Practice Exam Generator**: Generate practice exams based on difficulty, subject, and topic to aid learning.
         - **Video Explanation Generator**: Generate audio explanations with text-to-speech functionality for better understanding.
         - **Text Simplifier**: Simplify text to make it more accessible and easier to understand.
