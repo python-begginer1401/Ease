@@ -18,6 +18,11 @@ with st.sidebar:
 
     api_key = st.text_input("Google API Key", key="gemnikey", type="password")
 
+def to_markdown(text):
+    text = text.replace('•', '  *')
+    return textwrap.indent(text, '> ', predicate=lambda _: True)
+
+
 # Main Page Tab
 if tabs == "🏠 Home":
     st.title("🌬️ Ease Platform for Speacial Students ")
