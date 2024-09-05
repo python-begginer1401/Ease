@@ -16,10 +16,10 @@ if tabs == "Main Page":
     st.write("""
         Welcome to the AI tools Platform! 
         
-        - **File Q&A**: Upload an article and get answers to your questions in a simplified manner.
-        - **Chatbot Specialist**: Interact with a chatbot with any help you might need or if you just want to chat :)
-        - **Practice Exam Generator**: Generate practice exams based on difficulty, subject, and topic to aid learning.
-        - **Video Explanation Generator**: Generate audio explanations with text-to-speech functionality for better understanding.
+        - ** 📝 File Q&A**: Upload an article and get answers to your questions in a simplified manner.
+        - ** 💬 Chatbot Specialist**: Interact with a chatbot with any help you might need or if you just want to chat :)
+        - ** 📝 Practice Exam Generator**: Generate practice exams based on difficulty, subject, and topic to aid learning.
+        - **Audio Explanation Generator**: Generate audio explanations with text-to-speech functionality for better understanding.
         - **Text Simplifier**: Simplify text to make it more accessible and easier to understand.
 
         Select a tab from the sidebar to get started!
@@ -49,8 +49,8 @@ elif tabs == "File Q&A":
             st.error("Couldn't extract article.")
 
 # Chatbot Tab
-elif tabs == "Chatbot":
-    st.title("💬 Chatbot")
+elif tabs == "Chatbot Specialist":
+    st.title("💬 Chatbot Specialist")
     if "messages" not in st.session_state:
         st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
     
