@@ -16,7 +16,7 @@ with st.sidebar:
     tabs = st.sidebar.radio("Services/Programs", ["🏠 Home", "💬 Chatbot Specialist", "📝 File Q&A", "🎧 Audio Explanation Generator", "📚 Practice Exam Generator", "📝 Text Simplifier" ])
 
 
-    api_key = st.text_input("Google API Key", key="gemnikey", type="password")
+    api_key = st.text_input("Google API Key", key="AIzaSyAiSJp0W7afRsvzQXKtYEA8kB26PeMzidc", type="password")
 
 def to_markdown(text):
     text = text.replace('•', '  *')
