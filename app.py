@@ -48,7 +48,7 @@ elif tabs == "🎧 Audio Explanation Generator":
 
     if st.button("Generate Lesson"):
         try:
-            prompt = f"Write a simple lesson about {lesson_topic} in the subject of {lesson_subject}"
+            prompt = f"Write a simple lesson about {lesson_topic} in the subject of {lesson_subject} and ensure that it is written in a simple mannar targeted towards students with global developmental delay (gdd)"
             response = model.generate_content(prompt)
             lesson_text = response.text
 
